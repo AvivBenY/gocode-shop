@@ -1,8 +1,7 @@
 import React from 'react'
 import './Product.css';
 
-const Product = ({key,title, price, img})=> {
-  console.log("title", title);
+const Product = ({title, price, img})=> {
   return (
     <div className="product-card">
         <div className="product-image">

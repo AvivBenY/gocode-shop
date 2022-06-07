@@ -3,6 +3,9 @@ import Header from './Components/Header/Header';
 import Products from './Components/Products/Products';
 
 function App() {
+  
+
+
   const productsArr = [
     {
       "id": 1,
@@ -245,10 +248,15 @@ function App() {
       }
     }
   ]
+  const categories = productsArr
+  .map(p => p.category)
+  .filter((value, index, array) => array.indexOf(value)===index);
+
+console.log(categories);
 
   return (
     <>
-    <Header />
+    <Header props = {categories}/>
     <Products props={productsArr}/>
     </>
 );}
