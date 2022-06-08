@@ -1,11 +1,9 @@
+import { useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Products from './Components/Products/Products';
 
 function App() {
-  
-
-
   const productsArr = [
     {
       "id": 1,
@@ -248,17 +246,32 @@ function App() {
       }
     }
   ]
-  const categories = productsArr
-  .map(p => p.category)
-  .filter((value, index, array) => array.indexOf(value)===index);
+  const [filteredArr, setFilteredArr] = useState(productsArr);
 
-console.log(categories);
+
+  const categories = productsArr
+    .map(p => p.category)
+    .filter((value, index, array) => array.indexOf(value) === index);
+
+  
+  function filterArray(select) {
+    if(select === "all"){
+      return setFilteredArr(productsArr);
+    }
+    return setFilteredArr(productsArr.filter((product) => product.category === select))
+  }
+
+  console.log(categories);
 
   return (
     <>
-    <Header props = {categories}/>
-    <Products props={productsArr}/>
+      <Header props={categories} arrFunc={filterArray} />
+      <Products props={filteredArr} />
     </>
-);}
+  );
+}
 
 export default App;
+
+//create func that filter the array by some paramener, transfer the func to header and activate it with 
+//onchange by the value of the select

@@ -1,6 +1,6 @@
 import './Header.css';
 
-function Header({props}) {
+function Header({props, arrFunc}) {
   return (
     <nav className="product-filter">
     <h1>Jackets</h1>
@@ -8,10 +8,12 @@ function Header({props}) {
     <div className="sort">
       <div className="collection-sort">
         <label>Filter by:</label>
-        <select>
+        <select
+        onChange={(event) => arrFunc(event.target.value)  }>
+          <option value="all">All Products</option>
          {
            props.map((cat) => 
-           <option value="/">{cat} </option>)
+           <option key={cat.id} value={cat}>{cat} </option>)
          }
         </select>
       </div>
