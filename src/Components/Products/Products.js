@@ -1,15 +1,21 @@
 import './Products.css';
 import Product from '../Product/Product';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-const Products = ({props}) => (
+const Products = ({ productsList }) => (
       <section className="products">
-            {props.map((item) =>{
-              return(
-             <Product key ={item.id} title = {item.title} price={item.price} img ={item.image}/> 
-             )
-            })}
-    </section>
-  
-    )
+            {productsList.length > 0
+                  ? productsList.map((item) => {
+                        return (
+                              <Product
+                                    key={item.id}
+                                    title={item.title}
+                                    price={item.price}
+                                    img={item.image} />
+                        )
+                  }) : <LoadingSpinner />}
+      </section>
+
+)
 
 export default Products
