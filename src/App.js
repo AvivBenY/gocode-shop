@@ -34,13 +34,7 @@ function App() {
   }
 
   function addToCart(product) {
-    const isExist = checkoutArr.filter((p) => {
-      return p.id === product.id
-    })
-    if (isExist.length > 0) {
-      SetCheckoutArr(checkoutArr.filter((a) => a.id !== product.id))
-      product.cnt = isExist.length + 1;
-    }else{product.cnt = 0}
+    
     SetCheckoutArr(checkoutArr => [...checkoutArr, product]);
   }
 
