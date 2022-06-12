@@ -4,7 +4,7 @@ function Header({props, arrFunc}) {
   return (
     <nav className="product-filter">
     <h1>Jackets</h1>
-
+    
     <div className="sort">
       <div className="collection-sort">
         <label>Filter by:</label>
@@ -31,6 +31,9 @@ function Header({props, arrFunc}) {
           <option value="/">Date, old to new</option>
         </select>
       </div>
+      <div>
+      <button><label>Cart</label></button>
+    </div>
     </div>
   </nav>
   )

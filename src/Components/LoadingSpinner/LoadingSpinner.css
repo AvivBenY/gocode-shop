@@ -1,13 +1,4 @@
-/* html, body {
-    margin: 0;
-    height: 100%;
-  }
-  
-  body {
-    background: black;
-    background-size: 100% auto;
-    font-family: sans-serif;
-  } */
+
   
   .spinner-examples {
     display: grid;
@@ -54,4 +45,4 @@
   @keyframes spinner {
     to {transform: rotate(360deg);}
   }
-  
+

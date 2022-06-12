@@ -1,11 +1,12 @@
+
 import React from 'react';
 import './LoadingSpinner.css';
 
 function LoadingSpinner() {
   return(
-    <main class="spinner-examples">
-    <div class="example">Loading Products...
-      <span class="smooth spinner" />
+    <main className="spinner-examples">
+    <div className="example">Loading Products...
+      <span className="smooth spinner" />
     </div>
   </main>)
 }
