@@ -1,6 +1,8 @@
 import CheckoutCard from '../CheckoutCard/CheckoutCard'
 
-const Cart = ({checkoutLst}) => (
+const Cart = ({checkoutLst}) => {
+console.log(checkoutLst);
+    return(
     <section>
         {checkoutLst.map((item) => {
             return (
@@ -13,7 +15,7 @@ const Cart = ({checkoutLst}) => (
             )
         })}
     </section>
-)
+)}
 
 export default Cart
 

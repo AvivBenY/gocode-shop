@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import ProductCartContext from "../../Contexts/ProductCartContext"
+import StatesContext from "../../Contexts/StatesContext"
 import "./CheckoutCard.css"
 
 const CheckoutCard = ({ id,title, price, img, cnt})=> {    
-    const {removeFromCart} = useContext(ProductCartContext);
+    const {removeFromCart} = useContext(StatesContext);
     console.log("CHECKOUTCART", title, price, img, cnt);
     console.log(title, price, img);
     return (

@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import './Product.css';
-import ProductCartContext from "../../Contexts/ProductCartContext"
+import StatesContext from "../../Contexts/StatesContext"
+import { Link } from "react-router-dom";
 
 const Product = ({id, title, price, img})=> {
-  const {addToCart} = useContext(ProductCartContext);
-  
-  return (
+  const {addToCart} = useContext(StatesContext);
+  const product = {id, title, price, img};
+  return (    
     <div className="product-card">
+      <Link className="product-card" to={`/products/${id}`}>
         <div className="product-image">
             <img src={img}/>
         </div>
@@ -14,10 +16,11 @@ const Product = ({id, title, price, img})=> {
             <h5>{title}</h5>
             <h6>{price}</h6>
         </div>
+        </Link>
         <div>
           <button>-</button>
           <p></p>
-          <button onClick={() => addToCart({id, title, price, img})}>+</button>
+          <button onClick={() => addToCart({product})}>+</button>
         </div>
     </div>
   )
