@@ -25,11 +25,14 @@ import StatesContext from "../Contexts/StatesContext"
             return setFilteredArr(productsArr.filter((product) => product.category === select))
           }
 
+        function filterPriceArray(min,max){
+            setFilteredArr(productsArr.filter((product) => {return (product.price >=min && product.price <= max)}))
+        }  
           
           
     return (
         <>
-            <Header props={categories} arrFunc={filterArray} />
+            <Header props={categories} arrFunc={filterArray} priceFunc={filterPriceArray} />
             <Products productsList={filteredArr} />
             {checkoutArr.length > 0 && <Cart checkoutLst={checkoutArr} />}
         </>

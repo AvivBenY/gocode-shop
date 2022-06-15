@@ -18,9 +18,6 @@ function ProductDetails() {
     console.log("after render product", product);
   }, [])
 
-  console.log("id", id);
-  console.log("obj", product.id, product.title, product.price, product.img);
-
   return (
     <>
     <section id="head" className="head">
