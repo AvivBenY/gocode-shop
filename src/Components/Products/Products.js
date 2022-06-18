@@ -3,19 +3,21 @@ import Product from '../Product/Product';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
-const Products = ({ productsList }) => (
+const Products = ({ productsList, originalProducts }) => (
       <section className="products">
-            {productsList.length > 0
+            {originalProducts.length > 0
                   ? productsList.map((item) => {
-                        return (                              
+                        return (
                               <Product
                                     key={item.id}
                                     id={item.id}
                                     title={item.title}
                                     price={item.price}
-                                    img={item.image} />
+                                    img={item.image}
+                                    qty={item.qty}/>
                         )
-                  }) : <LoadingSpinner />}
+                  }) : <LoadingSpinner />
+            }
       </section>
 )
 

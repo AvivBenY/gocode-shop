@@ -3,26 +3,54 @@ import './Product.css';
 import StatesContext from "../../Contexts/StatesContext"
 import { Link } from "react-router-dom";
 
-const Product = ({id, title, price, img})=> {
-  const {addToCart} = useContext(StatesContext);
-  const product = {id, title, price, img};
-  return (    
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+
+
+const Product = ({ id, title, price, img, qty }) => {
+  const { addToCart } = useContext(StatesContext);
+  const { removeFromCart } = useContext(StatesContext);
+  const product = { id, title, price, img };
+  return (
     <div className="product-card">
-      <Link className="product-card" to={`/products/${id}`}>
-        <div className="product-image">
-            <img src={img}/>
-        </div>
-        <div className="product-info">
-            <h5>{title}</h5>
-            <h6>{price}</h6>
-        </div>
+      <Card >
+        <Link className="product-header" to={`/products/${id}`}>
+          <CardActionArea>
+            <CardMedia
+              className="product-image"
+              component="img"
+              height="250"
+              image={img}
+              alt="product image"
+            />
+            <CardContent className="product-info" >
+              <Typography gutterBottom variant="h6" component="div">
+                {title}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
         </Link>
-        <div>
-          <button>-</button>
-          <p></p>
-          <button onClick={() => addToCart({product})}>+</button>
-        </div>
-    </div>
+        <Typography gutterBottom variant="h6" component="div" className="product-info">
+          {price}$
+        </Typography>
+        <CardActions className='card-actions'>          
+          <Button size="meduim" color="primary" onClick={() => addToCart({ product })}>
+            +
+          </Button>
+          {qty >= 1 ?
+          <>
+          <p>{qty}</p> 
+          <Button size="meduim" color="primary" onClick={() => removeFromCart(id)}>
+          -
+        </Button>
+          </> : <></>}
+
+      </CardActions>
+    </Card>
+    </div >
   )
 }
 

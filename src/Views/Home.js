@@ -1,14 +1,14 @@
-import { useEffect, useState, useContext } from 'react';
+import {useContext } from 'react';
 import Header from '../Components/Header/Header';
 import Products from '../Components/Products/Products';
 import Cart from '../Components/Cart/Cart';
-// import ProductCartContext from "../Contexts/ProductCartContext"
-import StatesContext from "../Contexts/StatesContext"
-
+import StatesContext from "../Contexts/StatesContext";
+import MuiDrawer from '../Components/MuiDrawer/MuiDrawer';
  function Home() {
     const {productsArr, setProductsArr} = useContext(StatesContext);
     const {filteredArr, setFilteredArr} = useContext(StatesContext);
     const {checkoutArr, SetCheckoutArr} = useContext(StatesContext);
+
 
 
    
@@ -32,9 +32,9 @@ import StatesContext from "../Contexts/StatesContext"
           
     return (
         <>
-            <Header props={categories} arrFunc={filterArray} priceFunc={filterPriceArray} />
-            <Products productsList={filteredArr} />
-            {checkoutArr.length > 0 && <Cart checkoutLst={checkoutArr} />}
+            <Header props={categories} arrFunc={filterArray} priceFunc={filterPriceArray} checkoutLst={checkoutArr} />            
+            <Products productsList={filteredArr} originalProducts = {productsArr} />
+            {checkoutArr.length > 0 && <Cart checkoutLst={checkoutArr}/>}
         </>
     )
 }   

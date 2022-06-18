@@ -2,14 +2,15 @@ import './ProductDetails.css'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react';
 import StatesContext from "../Contexts/StatesContext"
-import Cart from '../Components/Cart/Cart';
+import MuiDrawer from '../Components/MuiDrawer/MuiDrawer';
+import { Button } from '@mui/material';
 
-function ProductDetails() {
-  const {id} = useParams();
+function ProductDetails({ checkoutLst }) {
+
+  const { id } = useParams();
   const [product, setProduct] = useState({})
-  const {checkoutArr, SetCheckoutArr} = useContext(StatesContext);
-  const {addToCart} = useContext(StatesContext);
-  
+  const { addToCart } = useContext(StatesContext);
+
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -20,36 +21,31 @@ function ProductDetails() {
 
   return (
     <>
-    <section id="head" className="head">
-      <div className="container">
 
-        <div className="content">
-          <div className="text">
-            <h2 className="title">{product.title}</h2>
-            <p className="description">{product.description}</p>
-            <button onClick={() => 
-              addToCart({product})}>
-            <div className="access">
-              <h3>Add To Cart</h3>
-              <h4>Get your products instantly</h4>
-              <span>
-                <i className="fas fa-plus"></i>
-              </span>
-            </div>
-            </button>
+      <div className="product-details-card">
+        <div className="badge">Hot</div>
+        <div className="product-tumb">
+          <div className="img-cont">
+            <img src={product.image} alt="" />
           </div>
-          <div className="view">
-            <div className="img-cont">
-              <img src={product.image} alt="" />
+        </div>
+        <div className="product-description">
+          <span className="product-catagory">{product.category}</span>
+          <h4>{product.title}</h4>
+          <br />
+          <p>{product.description}</p>
+          <div className="product-bottom-details">
+            <div className="product-price"><small>{product.price + 75}$</small> {product.price}$</div>
+            <div className="product-links">
+              <Button onClick={() => addToCart({ product })}>
+                <MuiDrawer checkoutLst={checkoutLst} />
+              </Button>
             </div>
           </div>
         </div>
-
       </div>
-    </section>
-      {checkoutArr.length > 0 && <Cart checkoutLst={checkoutArr} />}
-      </>
+    </>
   )
-}
-
+  }
 export default ProductDetails
+

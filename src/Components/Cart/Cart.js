@@ -1,9 +1,9 @@
+
 import CheckoutCard from '../CheckoutCard/CheckoutCard'
 
 const Cart = ({checkoutLst}) => {
-console.log(checkoutLst);
     return(
-    <section>
+        <section>
         {checkoutLst.map((item) => {
             return (
                 <CheckoutCard
@@ -11,11 +11,10 @@ console.log(checkoutLst);
                     title={item.title}
                     price={item.price}
                     img={item.image}
-                    cnt ={item.cnt} />
+                    qty ={item.qty} />
             )
         })}
     </section>
 )}
-
 export default Cart
 
