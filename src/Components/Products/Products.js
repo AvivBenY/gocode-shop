@@ -6,15 +6,15 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 const Products = ({ productsList, originalProducts }) => (
       <section className="products">
             {originalProducts.length > 0
-                  ? productsList.map((item) => {
+                  ? productsList.map((item, index) => {
                         return (
                               <Product
-                                    key={item.id}
+                                    key={index}
                                     id={item.id}
                                     title={item.title}
                                     price={item.price}
-                                    img={item.image}
-                                    qty={item.qty}/>
+                                    image={item.image}
+                                    qty={item.qty} />
                         )
                   }) : <LoadingSpinner />
             }

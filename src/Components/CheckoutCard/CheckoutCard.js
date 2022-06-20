@@ -2,7 +2,7 @@ import { useContext } from "react";
 import StatesContext from "../../Contexts/StatesContext"
 import "./CheckoutCard.css"
 
-const CheckoutCard = ({ id,title, price, img, qty})=> {    
+const CheckoutCard = ({ id,title, price, image, qty})=> {    
     const {removeFromCart} = useContext(StatesContext);
     
     return (

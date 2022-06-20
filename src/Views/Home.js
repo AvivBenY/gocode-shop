@@ -3,15 +3,12 @@ import Header from '../Components/Header/Header';
 import Products from '../Components/Products/Products';
 import Cart from '../Components/Cart/Cart';
 import StatesContext from "../Contexts/StatesContext";
-import MuiDrawer from '../Components/MuiDrawer/MuiDrawer';
- function Home() {
+ 
+function Home() {
     const {productsArr, setProductsArr} = useContext(StatesContext);
     const {filteredArr, setFilteredArr} = useContext(StatesContext);
     const {checkoutArr, SetCheckoutArr} = useContext(StatesContext);
 
-
-
-   
 
     const categories = productsArr
         .map(p => p.category)

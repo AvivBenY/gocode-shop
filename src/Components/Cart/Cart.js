@@ -7,10 +7,11 @@ const Cart = ({checkoutLst}) => {
         {checkoutLst.map((item) => {
             return (
                 <CheckoutCard
+                    key={item.id}
                     id={item.id}
                     title={item.title}
                     price={item.price}
-                    img={item.image}
+                    image={item.image}
                     qty ={item.qty} />
             )
         })}

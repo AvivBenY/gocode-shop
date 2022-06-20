@@ -18,7 +18,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://gocode-bituach-yashir.glitch.me/products")
       .then((res) => res.json())
       .then((products) => {
         setFilteredArr(products)
@@ -30,6 +30,8 @@ function App() {
   function addToCart({ product }) {
     const isExist = checkoutArr.find(a => (a.id === product.id))// product with qty key
     if (isExist !== undefined) {
+      console.log(isExist.qty);
+
       SetCheckoutArr(
         checkoutArr.map(p => p.id === isExist.id ? { ...isExist, qty: isExist.qty + 1 } : p)
       )
@@ -37,7 +39,7 @@ function App() {
         filteredArr.map(p => p.id === isExist.id ? { ...isExist, qty: isExist.qty + 1 } : p)
       )
       return;
-    }    
+    }
     setFilteredArr([...filteredArr, { ...product, qty: 1 }]);
     SetCheckoutArr([...checkoutArr, { ...product, qty: 1 }]);
   }
@@ -47,18 +49,19 @@ function App() {
     console.log("remove clicked");
     const isExist = checkoutArr.find(a => (a.id === id)) // product with qty key
     if (isExist.qty >= 2) {
+      console.log('removeFromCart');
       SetCheckoutArr(
         checkoutArr.map(p => p.id === isExist.id ? { ...isExist, qty: isExist.qty - 1 } : p)
       )
       setFilteredArr(
         filteredArr.map(p => p.id === isExist.id ? { ...isExist, qty: isExist.qty - 1 } : p)
       )
-      return;
+    } else {
+      setFilteredArr(
+        filteredArr.map(p => p.id === isExist.id ? { ...isExist, qty: 0 } : p)
+      )
+      SetCheckoutArr(checkoutArr.filter((product) => product.id !== id));
     }
-    setFilteredArr(
-      filteredArr.map(p => p.id === isExist.id ? { ...isExist, qty: 0 } : p)
-    )
-    SetCheckoutArr(checkoutArr.filter((product) => product.id !== id));
   }
 
   return (
@@ -78,7 +81,7 @@ function App() {
         }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products/:id" element={<ProductDetails checkoutLst={checkoutArr}/> } />
+          <Route path="/products/:id" element={<ProductDetails checkoutLst={checkoutArr} />} />
         </Routes>
       </StatesContext.Provider>
     </>

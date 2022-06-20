@@ -61,7 +61,7 @@ function Header({ props, arrFunc, priceFunc, checkoutLst }) {
             getAriaValueText={valuetext}
             max={6000} />
         </div>
-        <MuiDrawer checkoutLst={checkoutLst}/>
+          <MuiDrawer checkoutLst={checkoutLst} />
       </div>
     </nav>
   )

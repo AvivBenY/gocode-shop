@@ -10,10 +10,10 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 
-const Product = ({ id, title, price, img, qty }) => {
+const Product = ({ id, title, price, image, qty }) => {
   const { addToCart } = useContext(StatesContext);
   const { removeFromCart } = useContext(StatesContext);
-  const product = { id, title, price, img };
+  const product = { id, title, price, image };
   return (
     <div className="product-card">
       <Card >
@@ -23,7 +23,7 @@ const Product = ({ id, title, price, img, qty }) => {
               className="product-image"
               component="img"
               height="250"
-              image={img}
+              image={image}
               alt="product image"
             />
             <CardContent className="product-info" >
@@ -36,20 +36,20 @@ const Product = ({ id, title, price, img, qty }) => {
         <Typography gutterBottom variant="h6" component="div" className="product-info">
           {price}$
         </Typography>
-        <CardActions className='card-actions'>          
+        <CardActions className='card-actions'>
           <Button size="meduim" color="primary" onClick={() => addToCart({ product })}>
             +
           </Button>
           {qty >= 1 ?
-          <>
-          <p>{qty}</p> 
-          <Button size="meduim" color="primary" onClick={() => removeFromCart(id)}>
-          -
-        </Button>
-          </> : <></>}
+            <>
+              <p>{qty}</p>
+              <Button size="meduim" color="primary" onClick={() => removeFromCart(id)}>
+                -
+              </Button>
+            </> : <></>}
 
-      </CardActions>
-    </Card>
+        </CardActions>
+      </Card>
     </div >
   )
 }

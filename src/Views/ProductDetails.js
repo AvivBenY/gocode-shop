@@ -37,15 +37,14 @@ function ProductDetails({ checkoutLst }) {
           <div className="product-bottom-details">
             <div className="product-price"><small>{product.price + 75}$</small> {product.price}$</div>
             <div className="product-links">
-              <Button onClick={() => addToCart({ product })}>
-                <MuiDrawer checkoutLst={checkoutLst} />
-              </Button>
+              <Button onClick={() => addToCart({ product })}/>
+              <MuiDrawer checkoutLst={checkoutLst} />
             </div>
           </div>
         </div>
       </div>
     </>
   )
-  }
+}
 export default ProductDetails
 
