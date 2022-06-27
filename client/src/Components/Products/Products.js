@@ -10,7 +10,7 @@ const Products = ({ productsList, originalProducts }) => (
                         return (
                               <Product
                                     key={index}
-                                    id={item.id}
+                                    id={item._id}
                                     title={item.title}
                                     price={item.price}
                                     image={item.image}

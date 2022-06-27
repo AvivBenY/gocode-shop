@@ -18,7 +18,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("https://gocode-bituach-yashir.glitch.me/products")
+    fetch("/api/products")
       .then((res) => res.json())
       .then((products) => {
         setFilteredArr(products)

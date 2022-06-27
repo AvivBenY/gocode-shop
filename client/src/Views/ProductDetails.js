@@ -13,7 +13,7 @@ function ProductDetails({ checkoutLst }) {
 
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`/api/products/${id}`)
       .then((res) => res.json())
       .then((product) => setProduct(product));
     console.log("after render product", product);
@@ -37,7 +37,7 @@ function ProductDetails({ checkoutLst }) {
           <div className="product-bottom-details">
             <div className="product-price"><small>{product.price + 75}$</small> {product.price}$</div>
             <div className="product-links">
-              <Button onClick={() => addToCart({ product })}/>
+              <Button onClick={() => addToCart({ product })} />
               <MuiDrawer checkoutLst={checkoutLst} />
             </div>
           </div>
