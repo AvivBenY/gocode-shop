@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
-import './Product.css';
-import StatesContext from "../../Contexts/StatesContext"
+import React, { useContext } from "react";
+import "./Product.css";
+import StatesContext from "../../Contexts/StatesContext";
 import { Link } from "react-router-dom";
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 
 const Product = ({ id, title, price, image, qty }) => {
   const { addToCart } = useContext(StatesContext);
@@ -16,7 +15,7 @@ const Product = ({ id, title, price, image, qty }) => {
   const product = { id, title, price, image };
   return (
     <div className="product-card">
-      <Card >
+      <Card>
         <Link className="product-header" to={`/products/${id}`}>
           <CardActionArea>
             <CardMedia
@@ -26,32 +25,47 @@ const Product = ({ id, title, price, image, qty }) => {
               image={image}
               alt="product image"
             />
-            <CardContent className="product-info" >
+            <CardContent className="product-info">
               <Typography gutterBottom variant="h6" component="div">
                 {title}
               </Typography>
             </CardContent>
           </CardActionArea>
         </Link>
-        <Typography gutterBottom variant="h6" component="div" className="product-info">
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
+          className="product-info"
+        >
           {price}$
         </Typography>
-        <CardActions className='card-actions'>
-          <Button size="meduim" color="primary" onClick={() => addToCart({ product })}>
+        <CardActions className="card-actions">
+          <Button
+            size="meduim"
+            color="primary"
+            onClick={() => addToCart({ product })}
+          >
             +
           </Button>
-          {qty >= 1 ?
+          {qty >= 1 ? (
             <>
               <p>{qty}</p>
-              <Button size="meduim" color="primary" onClick={() => removeFromCart(id)}>
+              <Button
+                size="meduim"
+                color="primary"
+                onClick={() => removeFromCart(id)}
+              >
                 -
               </Button>
-            </> : <></>}
-
+            </>
+          ) : (
+            <></>
+          )}
         </CardActions>
       </Card>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Product
+export default Product;
