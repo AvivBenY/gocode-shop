@@ -1,5 +1,4 @@
-
-      .product-card {
+.product-card {
         display: flex;
         padding: 5px;        
         flex: 20%;
@@ -20,7 +19,13 @@
       
       .product-image img {
         width: 100%;
-      }
+        transition: all .2s ease-in-out;         
+      }     
+
+      .product-image:hover{
+                 
+        transform: scale(1.1); 
+      }    
       
       .product-info {
         margin-top: auto;
@@ -28,6 +33,15 @@
         text-align: center;
       }
       
+      .add { 
+        transition: all .2s ease-in-out; 
+        }
+        
+        .add:hover { 
+        transform: scale(1.1); 
+        }
+
+
       @media (max-width: 920px) {
         .product-card {
           flex: 1 21%;
@@ -46,8 +60,9 @@
       }
 
       .card-actions{
-        justify-content: flex-start;
         display: flex;
+        justify-content: center;
         flex-direction: row;
-      }
+      }  
+
       
